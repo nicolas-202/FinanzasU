@@ -2,10 +2,12 @@
 
 > Plataforma web de gestión financiera personal dirigida a estudiantes universitarios.
 
-![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?style=flat-square&logo=php&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-8.x-4479A1?style=flat-square&logo=mysql&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![Chart.js](https://img.shields.io/badge/Chart.js-4.x-FF6384?style=flat-square&logo=chartdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-18+-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
+![Recharts](https://img.shields.io/badge/Recharts-Gráficas-FF6384?style=flat-square)
+![Vite](https://img.shields.io/badge/Vite-Bundler-646CFF?style=flat-square&logo=vite&logoColor=white)
+![Git](https://img.shields.io/badge/Git-GitHub-F05032?style=flat-square&logo=git&logoColor=white)
 ![Estado](https://img.shields.io/badge/Estado-En%20desarrollo-orange?style=flat-square)
 ![Universidad](https://img.shields.io/badge/Universidad%20del%20Valle-Sede%20Zarzal-1A5276?style=flat-square)
 
@@ -18,20 +20,25 @@
 - [Stack tecnológico](#-stack-tecnológico)
 - [Estructura del proyecto](#-estructura-del-proyecto)
 - [Instalación local](#-instalación-local)
-- [Base de datos](#-base-de-datos)
-- [API endpoints](#-api-endpoints)
+- [Base de datos Supabase](#-base-de-datos-supabase)
+- [Supabase — Endpoints y servicios](#-supabase--endpoints-y-servicios)
+- [Seguridad](#-seguridad)
 - [Metodología Scrum](#-metodología-scrum)
-- [Equipo](#-equipo)
+- [Partes del contrato](#-partes-del-contrato)
+- [Equipo de desarrollo](#-equipo-de-desarrollo)
 
 ---
 
 ## 📖 Descripción
 
-**FinanzasU** es una plataforma web que ayuda a estudiantes universitarios a tomar el control de sus finanzas personales. Permite registrar ingresos y gastos, establecer presupuestos mensuales por categoría, recibir alertas automáticas al acercarse a los límites de gasto y visualizar estadísticas interactivas sobre los hábitos de consumo.
+**FinanzasU** es una plataforma web que ayuda a estudiantes universitarios a tomar el control de sus finanzas personales. Permite registrar ingresos y gastos, establecer presupuestos mensuales por categoría, recibir alertas automáticas al acercarse a los límites de gasto y visualizar estadísticas interactivas sobre hábitos de consumo.
 
 El proyecto surge como respuesta a una necesidad real: la mayoría de estudiantes universitarios asume responsabilidades económicas sin formación financiera previa. Las aplicaciones financieras existentes están orientadas a usuarios con experiencia o requieren vinculación bancaria, lo que limita su utilidad para este público.
 
-Desarrollado como proyecto académico en la **Universidad del Valle sede Zarzal**, bajo la asignatura *Introducción a la Gestión de Proyectos de Software*, aplicando metodología **Scrum** en 5 sprints de 15 días.
+Desarrollado como proyecto académico en la **Universidad del Valle sede Zarzal** bajo la asignatura *Introducción a la Gestión de Proyectos de Software*, aplicando metodología **Scrum** en 5 sprints de 15 días.
+
+> **Cliente:** FinanzasU S.A.S. — Representante Legal: Juan Camilo Triana
+> **Desarrollador:** Rise — Representante Legal: Deibyd Castillo
 
 ---
 
@@ -39,11 +46,11 @@ Desarrollado como proyecto académico en la **Universidad del Valle sede Zarzal*
 
 | Módulo | Descripción |
 |---|---|
-| 🔐 **Autenticación** | Registro, login y logout con sesiones PHP y contraseñas hasheadas con bcrypt |
+| 🔐 **Autenticación** | Registro, login y logout con Supabase Auth, tokens JWT y hash bcrypt |
 | 💸 **Transacciones** | Registrar, editar, eliminar, filtrar, paginar y exportar a CSV |
 | 🏷️ **Categorías** | Categorías predeterminadas del sistema + personalizadas por usuario |
-| 📊 **Presupuesto** | Límites mensuales por categoría con alertas al 80% y 100% del gasto |
-| 📈 **Dashboard** | Gráficas interactivas con Chart.js: torta, barras, línea y tarjetas de resumen |
+| 📊 **Presupuesto** | Límites mensuales por categoría con alertas automáticas al 80% y 100% |
+| 📈 **Dashboard** | Gráficas interactivas con Recharts: torta, barras, línea y tarjetas de resumen |
 | 👤 **Perfil** | Edición de datos personales y cambio de contraseña |
 
 ---
@@ -51,13 +58,24 @@ Desarrollado como proyecto académico en la **Universidad del Valle sede Zarzal*
 ## 🛠️ Stack tecnológico
 
 ```
-Frontend      →  HTML5 + CSS3 + JavaScript (ES6+)
-Backend       →  PHP 8.x + PDO
-Base de datos →  MySQL 8.x
-Gráficas      →  Chart.js 4.x (CDN)
-Seguridad     →  bcrypt + $_SESSION
+Frontend      →  React 18+ (Vite como bundler)
+Estilos       →  Tailwind CSS
+Backend & DB  →  Supabase (PostgreSQL + Auth + Storage + Edge Functions)
+Gráficas      →  Recharts
+Autenticación →  Supabase Auth (JWT + bcrypt)
+Seguridad DB  →  Row Level Security (RLS) de Supabase
 Versiones     →  Git + GitHub
 ```
+
+### ¿Por qué este stack?
+
+| Decisión | Justificación |
+|---|---|
+| **React** | Componentes reutilizables, ecosistema maduro, ideal para UIs dinámicas |
+| **Supabase** | Backend listo en minutos: PostgreSQL + Auth + API REST + RLS |
+| **Tailwind CSS** | Utility-first, responsive design sin salir del JSX |
+| **Recharts** | Librería de gráficas nativa para React, fácil de integrar con hooks |
+| **Vite** | Servidor de desarrollo ultra rápido con HMR y build optimizado |
 
 ---
 
@@ -66,72 +84,71 @@ Versiones     →  Git + GitHub
 ```
 finanzasU/
 │
-├── public/                     # Todo lo accesible desde el navegador
-│   ├── css/
-│   │   ├── main.css            # Variables globales, layout, navbar
-│   │   └── auth.css            # Estilos de login y registro
-│   ├── js/
-│   │   ├── main.js             # Utilidades globales: formatMoneda(), toggle navbar
-│   │   ├── auth.js             # Validaciones y fetch() de login/registro
-│   │   ├── transacciones.js    # CRUD, filtros, paginación, exportación CSV
-│   │   ├── categorias.js       # Gestión de categorías
-│   │   ├── presupuestos.js     # Presupuestos y alertas visuales
-│   │   ├── dashboard.js        # Inicialización de gráficas Chart.js
-│   │   └── perfil.js           # Actualización de perfil y contraseña
-│   └── components/
-│       ├── navbar.php          # Navegación lateral reutilizable
-│       └── layout.php          # Head, navbar y footer base
+├── src/
+│   ├── components/              # Componentes reutilizables
+│   │   ├── layout/
+│   │   │   ├── Navbar.jsx       # Navegación lateral responsive
+│   │   │   ├── Layout.jsx       # Wrapper global con navbar y rutas protegidas
+│   │   │   └── ProtectedRoute.jsx  # HOC que verifica sesión Supabase
+│   │   ├── ui/
+│   │   │   ├── Modal.jsx        # Modal de confirmación reutilizable
+│   │   │   ├── ProgressBar.jsx  # Barra de progreso con estados de color
+│   │   │   ├── Spinner.jsx      # Indicador de carga
+│   │   │   └── AlertBadge.jsx   # Badge de alerta (amarillo / rojo)
+│   │   └── charts/
+│   │       ├── PieChart.jsx     # Gráfica de torta — gastos por categoría
+│   │       ├── BarChart.jsx     # Gráfica de barras — ingresos vs gastos 6 meses
+│   │       └── LineChart.jsx    # Gráfica de línea — balance histórico
+│   │
+│   ├── pages/                   # Páginas principales
+│   │   ├── Login.jsx
+│   │   ├── Register.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── Transacciones.jsx
+│   │   ├── Categorias.jsx
+│   │   ├── Presupuestos.jsx
+│   │   └── Perfil.jsx
+│   │
+│   ├── hooks/                   # Custom hooks
+│   │   ├── useAuth.js           # Sesión con Supabase Auth
+│   │   ├── useTransacciones.js  # CRUD de transacciones
+│   │   ├── useCategorias.js     # CRUD de categorías
+│   │   ├── usePresupuestos.js   # Presupuestos con porcentaje calculado
+│   │   └── useDashboard.js      # Consultas de estadísticas
+│   │
+│   ├── services/                # Capa de acceso a Supabase
+│   │   ├── supabaseClient.js    # Inicialización del cliente Supabase
+│   │   ├── transaccionesService.js
+│   │   ├── categoriasService.js
+│   │   ├── presupuestosService.js
+│   │   └── dashboardService.js
+│   │
+│   ├── utils/
+│   │   ├── formatMoneda.js      # Formateador: $ 1.250.000
+│   │   ├── exportCSV.js         # Generador de CSV en el cliente
+│   │   └── constants.js         # Categorías predeterminadas y constantes
+│   │
+│   ├── App.jsx                  # Router principal con rutas protegidas
+│   └── main.jsx                 # Punto de entrada React + Vite
 │
-├── app/
-│   ├── config/
-│   │   ├── config.php          # Constantes globales, session_start()
-│   │   └── Database.php        # Conexión PDO centralizada
-│   ├── controllers/
-│   │   ├── AuthController.php
-│   │   ├── TransaccionController.php
-│   │   ├── CategoriaController.php
-│   │   ├── PresupuestoController.php
-│   │   ├── DashboardController.php
-│   │   └── PerfilController.php
-│   ├── models/
-│   │   ├── Usuario.php
-│   │   ├── Transaccion.php
-│   │   ├── Categoria.php
-│   │   ├── Presupuesto.php
-│   │   └── Dashboard.php
-│   └── helpers/
-│       └── Auth.php            # requireLogin() — protección de rutas
-│
-├── api/                        # Endpoints consumidos por el frontend
-│   ├── transacciones.php
-│   ├── categorias.php
-│   ├── presupuestos.php
-│   ├── dashboard.php
-│   ├── perfil.php
-│   └── exportar.php
-│
-├── database/
-│   ├── schema.sql              # Crea todas las tablas desde cero
-│   └── seeds.sql               # Datos de prueba
+├── supabase/
+│   ├── migrations/
+│   │   └── 001_initial_schema.sql  # Crea todas las tablas desde cero
+│   ├── seed.sql                 # Datos de prueba
+│   └── policies.sql             # Políticas Row Level Security (RLS)
 │
 ├── docs/
-│   ├── diagrama-ER.png         # Diagrama entidad-relación
-│   ├── API.md                  # Documentación de endpoints
-│   └── postman-collection.json # Colección Postman exportada
+│   ├── diagrama-ER.png          # Diagrama entidad-relación
+│   ├── API.md                   # Documentación de servicios Supabase
+│   └── rls-policies.md          # Documentación de políticas RLS
 │
-├── pages/                      # Páginas PHP protegidas
-│   ├── dashboard.php
-│   ├── transacciones.php
-│   ├── categorias.php
-│   ├── presupuestos.php
-│   └── perfil.php
-│
-├── login.php
-├── register.php
-├── logout.php
-├── index.php                   # Redirección: sesión activa → dashboard, si no → login
-├── .env.example
+├── .env.example                 # Variables de entorno requeridas
+├── .env.local                   # Variables locales (NO subir a Git)
 ├── .gitignore
+├── index.html
+├── vite.config.js
+├── tailwind.config.js
+├── package.json
 └── README.md
 ```
 
@@ -141,10 +158,9 @@ finanzasU/
 
 ### Requisitos previos
 
-- PHP 8.0 o superior
-- MySQL 8.0 o superior
-- Servidor local: [XAMPP](https://www.apachefriends.org/), [Laragon](https://laragon.org/) o similar
-- Git
+- [Node.js](https://nodejs.org/) 18.0 o superior
+- [Git](https://git-scm.com/)
+- Cuenta en [Supabase](https://supabase.com/) (gratuita)
 
 ### Paso 1 — Clonar el repositorio
 
@@ -153,54 +169,68 @@ git clone https://github.com/tu-usuario/finanzasU.git
 cd finanzasU
 ```
 
-### Paso 2 — Configurar variables de entorno
-
-Copia el archivo de ejemplo y completa los valores:
+### Paso 2 — Instalar dependencias
 
 ```bash
-cp .env.example .env
+npm install
 ```
 
-Edita `.env` con tus credenciales locales:
+### Paso 3 — Crear el proyecto en Supabase
+
+1. Ir a [supabase.com](https://supabase.com/) y crear un nuevo proyecto
+2. Ir a **Settings → API** y copiar:
+   - `Project URL`
+   - `anon public key`
+
+### Paso 4 — Configurar variables de entorno
+
+```bash
+cp .env.example .env.local
+```
+
+Edita `.env.local` con tus credenciales:
 
 ```env
-DB_HOST=localhost
-DB_NAME=finanzas_u
-DB_USER=root
-DB_PASS=
-APP_URL=http://localhost/finanzasU
+VITE_SUPABASE_URL=https://xxxxxxxxxxxx.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
-### Paso 3 — Crear la base de datos
+> ⚠️ **Nunca subas `.env.local` al repositorio.** Ya está en el `.gitignore`.
 
-Desde phpMyAdmin o la consola MySQL:
+### Paso 5 — Inicializar la base de datos
+
+En el **SQL Editor** de tu proyecto Supabase, ejecuta en orden:
 
 ```sql
-CREATE DATABASE finanzas_u CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- 1. Crear tablas
+\i supabase/migrations/001_initial_schema.sql
+
+-- 2. Aplicar políticas RLS
+\i supabase/policies.sql
+
+-- 3. Datos de prueba (opcional)
+\i supabase/seed.sql
 ```
 
-Luego ejecuta los scripts en orden:
+O con la CLI de Supabase:
 
 ```bash
-mysql -u root -p finanzas_u < database/schema.sql
-mysql -u root -p finanzas_u < database/seeds.sql
+supabase db push
 ```
 
-### Paso 4 — Configurar el servidor local
+### Paso 6 — Iniciar el servidor de desarrollo
 
-Coloca la carpeta del proyecto dentro de `htdocs` (XAMPP) o `www` (Laragon):
-
-```
-C:/xampp/htdocs/finanzasU/
+```bash
+npm run dev
 ```
 
-### Paso 5 — Abrir en el navegador
+La app estará en:
 
 ```
-http://localhost/finanzasU
+http://localhost:5173
 ```
 
-La página de inicio redirige automáticamente al login. Puedes usar el usuario de prueba incluido en `seeds.sql`:
+Usuario de prueba del `seed.sql`:
 
 ```
 Correo:     test@finanzasu.com
@@ -209,72 +239,117 @@ Contraseña: Test1234
 
 ---
 
-## 🗄️ Base de datos
+## 🗄️ Base de datos Supabase
 
-El esquema contiene 4 tablas principales:
+El esquema PostgreSQL contiene 4 tablas con RLS habilitado:
 
 ```
-usuarios          →  id, nombre, correo, contrasena, fecha_registro
-categorias        →  id, nombre, tipo, usuario_id, icono, es_predeterminada
-transacciones     →  id, usuario_id, categoria_id, monto, tipo, descripcion, fecha
-presupuestos      →  id, usuario_id, categoria_id, monto_limite, mes, anio
+auth.users (Supabase)   →  Gestionada automáticamente por Supabase Auth
+categorias              →  id, nombre, tipo, usuario_id, icono, es_predeterminada
+transacciones           →  id, usuario_id, categoria_id, monto, tipo, descripcion, fecha
+presupuestos            →  id, usuario_id, categoria_id, monto_limite, mes, anio
 ```
 
 Diagrama ER completo: [`/docs/diagrama-ER.png`](docs/diagrama-ER.png)
 
-> **Importante:** todas las consultas SQL usan **prepared statements PDO**. No existe ninguna concatenación directa de variables en las queries.
+### Row Level Security (RLS)
+
+Todas las tablas tienen RLS habilitado. Ejemplo de política:
+
+```sql
+-- Cada usuario solo ve y modifica sus propias transacciones
+CREATE POLICY "solo_mis_transacciones"
+ON transacciones FOR ALL
+USING (auth.uid() = usuario_id);
+```
+
+Documentación completa: [`/docs/rls-policies.md`](docs/rls-policies.md)
 
 ---
 
-## 🔌 API Endpoints
+## 🔌 Supabase — Endpoints y servicios
 
-Todos los endpoints están en `/api/` y retornan JSON. Requieren sesión activa excepto los de autenticación.
+El frontend consume Supabase directamente con `@supabase/supabase-js`.
 
-| Método | Ruta | Descripción |
-|---|---|---|
-| `POST` | `/login.php` | Iniciar sesión |
-| `POST` | `/register.php` | Crear cuenta |
-| `GET` | `/logout.php` | Cerrar sesión |
-| `GET` | `/api/transacciones.php` | Listar transacciones del mes (con filtros y paginación) |
-| `POST` | `/api/transacciones.php` | Crear transacción |
-| `PUT` | `/api/transacciones.php` | Editar transacción |
-| `DELETE` | `/api/transacciones.php` | Eliminar transacción |
-| `GET` | `/api/exportar.php` | Descargar historial CSV |
-| `GET` | `/api/categorias.php` | Listar categorías del usuario |
-| `POST` | `/api/categorias.php` | Crear categoría |
-| `PUT` | `/api/categorias.php` | Editar categoría |
-| `DELETE` | `/api/categorias.php` | Eliminar categoría |
-| `GET` | `/api/presupuestos.php` | Listar presupuestos del mes |
-| `POST` | `/api/presupuestos.php` | Crear presupuesto |
-| `PUT` | `/api/presupuestos.php` | Editar presupuesto |
-| `DELETE` | `/api/presupuestos.php` | Eliminar presupuesto |
-| `GET` | `/api/dashboard.php?accion=resumen` | Totales del mes |
-| `GET` | `/api/dashboard.php?accion=gastos-categoria` | Datos gráfica de torta |
-| `GET` | `/api/dashboard.php?accion=evolucion` | Datos gráfica de barras |
-| `GET` | `/api/dashboard.php?accion=top-categorias` | Top 5 categorías |
-| `POST` | `/api/perfil.php` | Actualizar nombre y correo |
-| `PUT` | `/api/perfil.php` | Cambiar contraseña |
+### Autenticación
 
-Documentación completa de parámetros y respuestas: [`/docs/API.md`](docs/API.md)
+```javascript
+// Registro
+await supabase.auth.signUp({ email, password })
+
+// Login
+await supabase.auth.signInWithPassword({ email, password })
+
+// Logout
+await supabase.auth.signOut()
+
+// Sesión activa
+const { data: { session } } = await supabase.auth.getSession()
+```
+
+### Transacciones
+
+```javascript
+// Listar con filtros y paginación
+supabase.from('transacciones')
+  .select('*, categorias(nombre)')
+  .eq('usuario_id', userId)
+  .gte('fecha', inicioMes)
+  .lte('fecha', finMes)
+  .order('fecha', { ascending: false })
+  .range(offset, offset + limite - 1)
+
+// Crear / Editar / Eliminar
+supabase.from('transacciones').insert({ ...datos, usuario_id: userId })
+supabase.from('transacciones').update(datos).eq('id', id).eq('usuario_id', userId)
+supabase.from('transacciones').delete().eq('id', id).eq('usuario_id', userId)
+```
+
+### Funciones RPC del Dashboard
+
+| Función | Descripción |
+|---|---|
+| `get_resumen_mes` | Total ingresos, gastos, balance y N° transacciones |
+| `get_gastos_por_categoria` | Distribución de gastos con porcentajes para la torta |
+| `get_evolucion_mensual` | Ingresos y gastos de los últimos 6 meses para las barras |
+| `get_top_categorias` | Top 5 categorías con más gasto del mes |
+| `get_estado_presupuestos` | Contadores verde / amarillo / rojo de presupuestos |
+
+Documentación completa: [`/docs/API.md`](docs/API.md)
+
+---
+
+## 🔒 Seguridad
+
+| Capa | Mecanismo |
+|---|---|
+| **Autenticación** | Supabase Auth — tokens JWT firmados con expiración automática |
+| **Contraseñas** | Hash bcrypt gestionado internamente por Supabase Auth |
+| **Acceso a datos** | Row Level Security (RLS) — nadie accede a datos ajenos |
+| **Variables sensibles** | `.env.local` excluido del repositorio vía `.gitignore` |
+| **Rutas protegidas** | `ProtectedRoute.jsx` verifica sesión antes de renderizar |
+| **anon key** | Solo permite operaciones dentro de las políticas RLS definidas |
+
+> Las políticas RLS garantizan que aunque alguien obtenga la `anon key`, **jamás podrá leer ni modificar datos de otro usuario**.
 
 ---
 
 ## 🔄 Metodología Scrum
 
-El proyecto se desarrolla en **5 sprints de 15 días** con la siguiente distribución:
+Proyecto desarrollado bajo contrato **N° FINU-2026-001** entre FinanzasU S.A.S. y Rise.
 
-| Sprint | Período | Módulos |
-|---|---|---|
-| Sprint 1 | Días 1–15 | Base de datos, autenticación y sesión |
-| Sprint 2 | Días 16–30 | Registro y gestión de transacciones |
-| Sprint 3 | Días 31–45 | Categorías y presupuesto mensual |
-| Sprint 4 | Días 46–60 | Dashboard y visualizaciones Chart.js |
-| Sprint 5 | Días 61–75 | Seguridad, pruebas y entrega final |
+| Sprint | Período | Módulo | Entregable |
+|---|---|---|---|
+| Sprint 1 | Días 1–15 | Autenticación y Base de Datos | Supabase configurado, Auth funcional, esquema + RLS |
+| Sprint 2 | Días 16–30 | Transacciones | CRUD completo con filtros, paginación y exportación CSV |
+| Sprint 3 | Días 31–45 | Categorías y Presupuesto | Categorías + presupuesto mensual con alertas al 80% y 100% |
+| Sprint 4 | Días 46–60 | Dashboard y Gráficas | Recharts con torta, barras, línea y top 5 categorías |
+| Sprint 5 | Días 61–75 | Pruebas y Entrega Final | Testing real, corrección de bugs y documentación |
 
 ### Flujo de trabajo Git
 
 ```
-main          ←  producción (solo merge desde develop)
+main          ←  producción (solo merge mediante PR aprobado)
   └── develop ←  integración del sprint
         └── feature/HU-XX-nombre-de-la-historia
 ```
@@ -285,34 +360,77 @@ main          ←  producción (solo merge desde develop)
 feat:     nueva funcionalidad
 fix:      corrección de bug
 docs:     cambios en documentación
-style:    cambios de CSS o formato sin lógica
+style:    cambios de estilos sin lógica
 refactor: refactorización sin cambio de comportamiento
 test:     pruebas
 ```
 
 ### Definición de terminado (DoD)
 
-Una historia está terminada cuando:
-
-- ✅ Código en GitHub con commit descriptivo
-- ✅ Pull Request aprobado por al menos un compañero
-- ✅ Probada en escenario exitoso y de error
-- ✅ Endpoints PHP responden con códigos HTTP correctos
-- ✅ Interfaz responsive en 375px y 1280px
+- ✅ Código en GitHub con commit descriptivo en `feature/HU-XX`
+- ✅ Pull Request aprobado por al menos un compañero antes de fusionar a `develop`
+- ✅ Probada en escenario exitoso y en al menos un escenario de error
+- ✅ Políticas RLS de Supabase verificadas para la funcionalidad
+- ✅ Interfaz responsive en 375px (móvil) y 1280px (escritorio)
 - ✅ Mensajes al usuario en español sin errores técnicos visibles
-- ✅ Todas las queries usan prepared statements PDO
-- ✅ No se rompió ninguna funcionalidad anterior
+- ✅ Token JWT validado correctamente en rutas protegidas
+- ✅ Ninguna funcionalidad anterior fue rota (regresión básica)
 
 ---
 
+## 📄 Partes del contrato
 
+| Rol | Empresa | Representante Legal |
+|---|---|---|
+| 🏢 **EL CLIENTE** | FinanzasU S.A.S. | Juan Camilo Triana |
+| 💻 **EL DESARROLLADOR** | Rise | Deibyd Castillo |
 
-**Docente:** Gustavo Adolfo Osorio  
-**Asignatura:** Introducción a la Gestión de Proyectos de Software  
+**Condiciones clave — Contrato N° FINU-2026-001:**
+- 5 sprints con Acta de Aceptación firmada por entregable
+- Penalización del 10% del monto del sprint por entrega tardía
+- 30 días de garantía post-lanzamiento sin errores críticos
+- 3 meses de soporte técnico gratuito tras la entrega final
+- Todos los derechos de propiedad intelectual cedidos a FinanzasU S.A.S.
+
+---
+
+## 👥 Equipo de desarrollo
+
+**Rise** — empresa desarrolladora
+
+| Integrante | Rol |
+|---|---|
+| Deibyd Castillo | Representante Legal / Líder del proyecto |
+| *(por definir)* | Frontend — React + Tailwind CSS |
+| *(por definir)* | Frontend — Hooks + Recharts |
+| *(por definir)* | Backend — Supabase + RLS + Edge Functions |
+
+**FinanzasU S.A.S.** — empresa cliente
+
+| Integrante | Rol |
+|---|---|
+| Juan Camilo Triana | Representante Legal / Product Owner |
+| Kevin Marino Villafañe | Co-fundador |
+| Juan Carlos Quintero | Co-fundador |
+| Juan Andrés Salazar | Co-fundador |
+
+**Supervisor académico:** Gustavo Adolfo Osorio
+**Asignatura:** Introducción a la Gestión de Proyectos de Software
 **Universidad del Valle — Sede Zarzal · 2026**
 
 ---
 
+## 📦 Scripts disponibles
+
+```bash
+npm run dev        # Servidor de desarrollo con HMR en localhost:5173
+npm run build      # Build de producción optimizado en /dist
+npm run preview    # Previsualizar el build de producción localmente
+npm run lint       # Verificar código con ESLint
+```
+
+---
+
 <div align="center">
-  <sub>Desarrollado con ❤️ por el equipo FinanzasU · Universidad del Valle 2026</sub>
+  <sub>FinanzasU S.A.S. · Desarrollado por Rise · Universidad del Valle 2026</sub>
 </div>
