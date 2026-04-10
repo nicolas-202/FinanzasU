@@ -20,6 +20,7 @@
 - [Stack tecnológico](#-stack-tecnológico)
 - [Estructura del proyecto](#-estructura-del-proyecto)
 - [Instalación local](#-instalación-local)
+- [Guías operativas](#-guías-operativas)
 - [Base de datos Supabase](#-base-de-datos-supabase)
 - [Supabase — Endpoints y servicios](#-supabase--endpoints-y-servicios)
 - [Seguridad](#-seguridad)
@@ -156,6 +157,10 @@ finanzasU/
 
 ## 🚀 Instalación local
 
+Guia detallada y estandar del equipo:
+
+- [docs/GUIA_INSTALACION.md](docs/GUIA_INSTALACION.md)
+
 ### Requisitos previos
 
 - [Node.js](https://nodejs.org/) 18.0 o superior
@@ -203,15 +208,18 @@ En el **SQL Editor** de tu proyecto Supabase, ejecuta en orden:
 
 ```sql
 -- 1. Crear tablas
-\i supabase/migrations/001_initial_schema.sql
+\i supabase/001_initial_schema.sql
 
 -- 2. Aplicar políticas RLS
 \i supabase/policies.sql
 
--- 3. Datos de prueba (opcional)
+-- Datos de prueba (opcional)
 \i supabase/seed.sql
 ```
 
+Guia completa de instalacion:
+
+- [docs/GUIA_INSTALACION.md](docs/GUIA_INSTALACION.md)
 O con la CLI de Supabase:
 
 ```bash
@@ -264,6 +272,14 @@ USING (auth.uid() = usuario_id);
 ```
 
 Documentación completa: [`/docs/rls-policies.md`](docs/rls-policies.md)
+
+---
+
+## 📚 Guías operativas
+
+- Instalación: [docs/GUIA_INSTALACION.md](docs/GUIA_INSTALACION.md)
+- Arquitectura: [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md)
+- Flujo de ramas: [docs/GUIA_RAMAS.md](docs/GUIA_RAMAS.md)
 
 ---
 
