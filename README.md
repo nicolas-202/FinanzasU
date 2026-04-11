@@ -279,7 +279,7 @@ Documentación completa: [`/docs/rls-policies.md`](docs/rls-policies.md)
 
 - Instalación: [docs/GUIA_INSTALACION.md](docs/GUIA_INSTALACION.md)
 - Arquitectura: [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md)
-- Flujo de ramas: [docs/GUIA_RAMAS.md](docs/GUIA_RAMAS.md)
+- Colaboración Git (ramas, commits y PR): [docs/GUIA_RAMAS.md](docs/GUIA_RAMAS.md)
 
 ---
 
