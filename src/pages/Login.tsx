@@ -48,13 +48,13 @@ export default function Login() {
           <div className="relative z-10 p-16 max-w-2xl">
             <div className="mb-12">
               <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white font-label text-sm backdrop-blur-md mb-6">
-                Designed for University Students
+                Diseñado para estudiantes universitarios
               </span>
-              <h1 className="font-headline font-extrabold text-white text-6xl tracking-tighter leading-tight mb-8">
-                Editorial <br />Financial <br />Fluidity.
+              <h1 className="font-headline font-extrabold text-white text-5xl xl:text-6xl tracking-tighter leading-tight whitespace-nowrap mb-8">
+                Finanzas ágiles y claras.
               </h1>
               <p className="text-on-primary-container text-xl leading-relaxed font-medium">
-                Empowering the next generation of academic leaders with fluid, sophisticated financial tools that respect your intelligence.
+                Impulsamos a la nueva generación de líderes académicos con herramientas financieras inteligentes y fáciles de usar.
               </p>
             </div>
 
@@ -67,11 +67,11 @@ export default function Login() {
                 />
                 <div>
                   <p className="text-white font-semibold">Julian Rivera</p>
-                  <p className="text-white/60 text-sm">Economics Junior, UNAM</p>
+                  <p className="text-white/60 text-sm">Estudiante de Economía, UNAM</p>
                 </div>
               </div>
               <p className="text-white text-lg italic leading-snug">
-                "FinanzasU changed how I view my budget. It's not just a tracker; it's a mentor that speaks my language."
+                "FinanzasU cambió mi forma de ver mi presupuesto. No es solo un registro; es una guía que habla mi idioma."
               </p>
             </div>
           </div>
@@ -80,7 +80,7 @@ export default function Login() {
             <div className="w-8 h-8 rounded-lg bg-secondary-fixed flex items-center justify-center">
               <span className="material-symbols-outlined text-on-secondary-fixed text-xl">account_balance_wallet</span>
             </div>
-            <span className="font-headline font-bold text-white text-xl tracking-tighter">Editorial Financial</span>
+            <span className="font-headline font-bold text-white text-xl tracking-tighter">FinanzasU</span>
           </div>
         </section>
 
@@ -94,37 +94,20 @@ export default function Login() {
             </div>
 
             <div className="mb-10">
-              <h2 className="font-headline font-extrabold text-on-surface text-4xl tracking-tight mb-3">Welcome back.</h2>
-              <p className="text-on-surface-variant font-medium">Continue your journey toward financial freedom.</p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              <button className="flex items-center justify-center gap-3 px-4 py-3.5 bg-surface-container-lowest border border-outline-variant/20 rounded-xl font-medium text-on-surface-variant hover:bg-surface-container-low transition-all duration-200" type="button">
-                <img alt="Google" className="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcaHlbsKcPkz1EZ31w73xPKdfNHkv7bZ2XuGKt-Qmw9yaNVcCnimSbkps4tQgP3xB3gmw5NQdLrHE1pLGEamnGKHvqoLyjBZ05loalkaFs5lznRCfiTHZ491JxvzSm2i7JpqElLVHhaRysUFTGOqWAaTWF_1geKK8WuEeXkXpFOLwPC8nNnuyDpToFFxPDrA5OMpMtj3QmuevGuqwH9z1m8dS_wat0RwMItnVm46-Z5lxWEPu-IhEqNRmg2ZT5tNXxHvH5sDoYv84" />
-                <span>Google</span>
-              </button>
-              <button className="flex items-center justify-center gap-3 px-4 py-3.5 bg-surface-container-lowest border border-outline-variant/20 rounded-xl font-medium text-on-surface-variant hover:bg-surface-container-low transition-all duration-200" type="button">
-                <img alt="Apple" className="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaAQG-er17ScrAXfADOVFOT3oRFi-iTeElGh3kiwGEkczenXNko0sV72AoPzW5nB3dDBvMHUyLvwBLPWL5xfUsoRxwFu3bHCwDrU05qzfMzlO1UgS4Brt60WRQRO906n3ofedN9mrIjuNfRq7HEDwvMMlrIbHvISL-TcFXReSNpk2geuKMRSObV8Pkz7TjmfHRoj_An8ElvHaBiJUivZG5xSORqEE8b1glUEWiTFuw1xlYrHEszi1IWtTkFlpWM_VpDve2M26wjW0" />
-                <span>Apple</span>
-              </button>
-            </div>
-
-            <div className="relative flex items-center mb-8">
-              <div className="flex-grow border-t border-outline-variant/20" />
-              <span className="px-4 text-sm font-label text-outline uppercase tracking-widest">or email</span>
-              <div className="flex-grow border-t border-outline-variant/20" />
+              <h2 className="font-headline font-extrabold text-on-surface text-4xl tracking-tight mb-3">Bienvenido de nuevo.</h2>
+              <p className="text-on-surface-variant font-medium">Continúa tu camino hacia la libertad financiera.</p>
             </div>
 
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-on-surface ml-1" htmlFor="email">University Email</label>
+                <label className="block text-sm font-semibold text-on-surface ml-1" htmlFor="email">Correo universitario</label>
                 <div className="login-field-wrap relative group">
                   <span className="material-symbols-outlined login-field-icon text-outline group-focus-within:text-primary transition-colors">alternate_email</span>
                   <input
                     id="email"
                     type="email"
                     autoComplete="email"
-                    placeholder="name@university.edu"
+                    placeholder="nombre@universidad.edu"
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value)
@@ -140,8 +123,8 @@ export default function Login() {
 
               <div className="space-y-2">
                 <div className="flex justify-between items-center px-1">
-                  <label className="block text-sm font-semibold text-on-surface" htmlFor="password">Password</label>
-                  <a className="text-xs font-bold text-primary hover:text-primary-container transition-colors" href="#">Forgot password?</a>
+                  <label className="block text-sm font-semibold text-on-surface" htmlFor="password">Contraseña</label>
+                  <a className="text-xs font-bold text-primary hover:text-primary-container transition-colors" href="#">¿Olvidaste tu contraseña?</a>
                 </div>
                 <div className="login-field-wrap relative group">
                   <span className="material-symbols-outlined login-field-icon text-outline group-focus-within:text-primary transition-colors">lock</span>
@@ -174,18 +157,18 @@ export default function Login() {
                   onChange={(e) => setRemember(e.target.checked)}
                   className="login-checkbox w-5 h-5 rounded border-outline-variant/30 text-primary focus:ring-primary"
                 />
-                <label className="text-sm font-medium text-on-surface-variant" htmlFor="remember">Remember me on this device</label>
+                <label className="text-sm font-medium text-on-surface-variant" htmlFor="remember">Recordarme en este dispositivo</label>
               </div>
 
               <button className="w-full py-4 editorial-gradient text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 active:scale-[0.98] transition-all duration-200 text-lg disabled:opacity-60 disabled:cursor-not-allowed" disabled={loading} type="submit">
-                {loading ? 'Logging in...' : 'Log In'}
+                {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
               </button>
             </form>
 
             <div className="mt-12 text-center">
               <p className="text-on-surface-variant font-medium">
-                New to FinanzasU?
-                <Link className="text-primary font-bold hover:underline ml-1" to="/register">Create an account</Link>
+                ¿Nuevo en FinanzasU?
+                <Link className="text-primary font-bold hover:underline ml-1" to="/register">Crear una cuenta</Link>
               </p>
             </div>
 
@@ -201,8 +184,8 @@ export default function Login() {
 
       <footer className="fixed bottom-6 left-1/2 -translate-x-1/2 lg:left-auto lg:right-12 lg:translate-x-0 hidden md:block">
         <div className="flex gap-6 text-[10px] font-label text-outline uppercase tracking-widest">
-          <a className="hover:text-primary transition-colors" href="#">Privacy Policy</a>
-          <a className="hover:text-primary transition-colors" href="#">Terms of Service</a>
+          <a className="hover:text-primary transition-colors" href="#">Política de privacidad</a>
+          <a className="hover:text-primary transition-colors" href="#">Términos del servicio</a>
           <a className="hover:text-primary transition-colors" href="#">Cookies</a>
         </div>
       </footer>

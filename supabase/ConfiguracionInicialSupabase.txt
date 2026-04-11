@@ -1,0 +1,13 @@
+Paso 1 — Crear el proyecto en Supabase
+
+Ve a supabase.com → Nuevo proyecto
+Nombre: FinanzasU, elige región más cercana (US East o similar)
+Guarda bien la Database Password que generas ahí
+Espera ~2 minutos a que aprovisione
+
+Paso 2 — SQL Editor → ejecuta esto en orden:
+
+1. 001_initial_schema.sql — crea las tablas
+2. policies.sql — activa RLS y crea políticas
+3. Trigger — crea el perfil automáticamente al registrarse
+4. seed.sql — categorías predeterminadas del sistema

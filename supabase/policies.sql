@@ -1,75 +1,21 @@
--- ═══════════════════════════════════════════════════════════
--- FinanzasU — Políticas Row Level Security (RLS)
--- Archivo: supabase/policies.sql
--- ═══════════════════════════════════════════════════════════
+-- Activar RLS
+ALTER TABLE public.perfiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.categorias ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.transacciones ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.presupuestos ENABLE ROW LEVEL SECURITY;
 
--- ─────────────────────────────────────────────────────────
--- Políticas para: categorias
--- ─────────────────────────────────────────────────────────
+-- Perfiles: cada usuario solo ve y edita el suyo
+CREATE POLICY "solo_mi_perfil" ON public.perfiles
+  FOR ALL USING (auth.uid() = id);
 
--- Ver: categorías propias + predeterminadas
-CREATE POLICY "ver_categorias"
-ON categorias FOR SELECT
-USING (
-  es_predeterminada = true
-  OR auth.uid() = usuario_id
-);
+-- Categorías: las suyas + las predeterminadas del sistema (user_id IS NULL)
+CREATE POLICY "mis_categorias_y_globales" ON public.categorias
+  FOR ALL USING (user_id = auth.uid() OR user_id IS NULL);
 
--- Crear: solo categorías propias
-CREATE POLICY "crear_categorias"
-ON categorias FOR INSERT
-WITH CHECK (auth.uid() = usuario_id);
+-- Transacciones: solo las suyas
+CREATE POLICY "solo_mis_transacciones" ON public.transacciones
+  FOR ALL USING (auth.uid() = user_id);
 
--- Editar: solo categorías propias (no predeterminadas)
-CREATE POLICY "editar_categorias"
-ON categorias FOR UPDATE
-USING (auth.uid() = usuario_id AND es_predeterminada = false)
-WITH CHECK (auth.uid() = usuario_id);
-
--- Eliminar: solo categorías propias (no predeterminadas)
-CREATE POLICY "eliminar_categorias"
-ON categorias FOR DELETE
-USING (auth.uid() = usuario_id AND es_predeterminada = false);
-
--- ─────────────────────────────────────────────────────────
--- Políticas para: transacciones
--- ─────────────────────────────────────────────────────────
-
--- Cada usuario solo ve y modifica sus propias transacciones
-CREATE POLICY "ver_transacciones"
-ON transacciones FOR SELECT
-USING (auth.uid() = usuario_id);
-
-CREATE POLICY "crear_transacciones"
-ON transacciones FOR INSERT
-WITH CHECK (auth.uid() = usuario_id);
-
-CREATE POLICY "editar_transacciones"
-ON transacciones FOR UPDATE
-USING (auth.uid() = usuario_id)
-WITH CHECK (auth.uid() = usuario_id);
-
-CREATE POLICY "eliminar_transacciones"
-ON transacciones FOR DELETE
-USING (auth.uid() = usuario_id);
-
--- ─────────────────────────────────────────────────────────
--- Políticas para: presupuestos
--- ─────────────────────────────────────────────────────────
-
-CREATE POLICY "ver_presupuestos"
-ON presupuestos FOR SELECT
-USING (auth.uid() = usuario_id);
-
-CREATE POLICY "crear_presupuestos"
-ON presupuestos FOR INSERT
-WITH CHECK (auth.uid() = usuario_id);
-
-CREATE POLICY "editar_presupuestos"
-ON presupuestos FOR UPDATE
-USING (auth.uid() = usuario_id)
-WITH CHECK (auth.uid() = usuario_id);
-
-CREATE POLICY "eliminar_presupuestos"
-ON presupuestos FOR DELETE
-USING (auth.uid() = usuario_id);
+-- Presupuestos: solo los suyos
+CREATE POLICY "solo_mis_presupuestos" ON public.presupuestos
+  FOR ALL USING (auth.uid() = user_id);
