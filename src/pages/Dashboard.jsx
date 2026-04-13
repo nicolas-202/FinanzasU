@@ -1,23 +1,16 @@
 import { useAuth } from '../hooks/useAuth'
 import { useInitialData } from '../hooks/useInitialData'
 import { useAppDataContext } from '../context/AppDataContext'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function Dashboard() {
-  const { usuario, cerrarSesion } = useAuth()
+  const { usuario } = useAuth()
   const { transacciones, cargandoDatos, errorGlobal } = useInitialData()
-  const { totales, limpiarEstado } = useAppDataContext()
-  const navigate = useNavigate()
-
-  const handleLogout = async () => {
-    limpiarEstado()
-    await cerrarSesion()
-    navigate('/login', { replace: true })
-  }
+  const { totales } = useAppDataContext()
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-md p-8 space-y-6">
+    <div className="mx-auto max-w-4xl rounded-4xl border border-[#c5c5d4]/35 bg-white/80 p-6 shadow-xl shadow-[#24389c]/10 backdrop-blur-sm md:p-8">
+      <div className="space-y-6">
         <h1 className="text-2xl font-bold text-indigo-600 mb-2">
           Bienvenido a FinanzasU
         </h1>
@@ -69,13 +62,6 @@ export default function Dashboard() {
             Editar perfil
           </Link>
         </div>
-
-        <button
-          onClick={handleLogout}
-          className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
-        >
-          Cerrar sesión
-        </button>
       </div>
     </div>
   )
