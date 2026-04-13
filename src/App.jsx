@@ -5,6 +5,7 @@ import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import Transacciones from './pages/Transacciones'
 import Perfil from './pages/Perfil'
+import Layout from './components/layout/Layout'
 import ProtectedRoute from './components/layout/ProtectedRoute'
 import './auth-theme.css'
 
@@ -17,17 +18,23 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={
             <ProtectedRoute>
-              <Dashboard />
+              <Layout>
+                <Dashboard />
+              </Layout>
             </ProtectedRoute>
           } />
           <Route path="/transacciones" element={
             <ProtectedRoute>
-              <Transacciones />
+              <Layout>
+                <Transacciones />
+              </Layout>
             </ProtectedRoute>
           } />
           <Route path="/perfil" element={
             <ProtectedRoute>
-              <Perfil />
+              <Layout>
+                <Perfil />
+              </Layout>
             </ProtectedRoute>
           } />
           <Route path="*" element={<Navigate to="/login" replace />} />
