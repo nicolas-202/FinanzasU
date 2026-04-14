@@ -10,7 +10,7 @@ export default function Modal({ isOpen, onClose, title, size = 'md', children, f
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={onClose}>
       <div
-        className={`bg-surface-container rounded-2xl shadow-xl ${sizeClasses[size]} w-full mx-4`}
+        className={`bg-white rounded-2xl shadow-xl ${sizeClasses[size]} w-full mx-4`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="px-6 py-4 border-b border-outline-variant/20">
